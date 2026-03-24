@@ -2,7 +2,10 @@ package main
 
 import (
 	"awesomeProject2/str"
+	"awesomeProject2/str/tasks"
 	"fmt"
+	"strings"
+	"unicode"
 )
 
 func main() {
@@ -32,10 +35,29 @@ func main() {
 	// Задачки
 	fmt.Println("************************************")
 
+	// Переворачиваем строку
+	//str3 := tasks.ReverseString("Привет")
 	str3 := reverseString("Привет")
 	fmt.Println(str3)
+
+	// Проверка на полиндром
+	fmt.Println(tasks.IsPalindrome("212"))
+	fmt.Println(isPalindrome("топот"))
+
+	// Уникальный символ в строке
+
+	str4 := tasks.UniqueSymbol("Привет")
+	fmt.Println(str4)
+
+	// это анаграмма
+	fmt.Println(tasks.IsAnagrams("123", "321 "))
+
+	// сжатие строки
+	fmt.Println(tasks.RunLengthEncoding("aaaa                                                     ssss"))
+
 }
 
+// тут я проверяю свои знания епт
 func reverseString(str string) string {
 	runes := []rune(str)
 	left, right := 0, len(runes)-1
@@ -47,4 +69,24 @@ func reverseString(str string) string {
 	}
 
 	return string(runes)
+}
+
+func isPalindrome(str string) bool {
+	var cleaned []rune
+	for _, r := range strings.ToLower(str) {
+		if unicode.IsLetter(r) || unicode.IsDigit(r) {
+			cleaned = append(cleaned, r)
+		}
+	}
+
+	left, right := 0, len(cleaned)-1
+	for left < right {
+		if cleaned[left] != cleaned[right] {
+			return false
+		}
+		left++
+		right--
+	}
+
+	return true
 }
