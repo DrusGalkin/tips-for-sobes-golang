@@ -11,6 +11,13 @@ import (
 func main() {
 	str.StrCounter("Привет")
 
+	pricol := "Hello 😂"
+
+	for _, r := range pricol {
+		fmt.Print(r) // смайли(⌐■_■)ки тоже есть в таблице аски (■_■⌐)
+	}
+	fmt.Println()
+
 	// хорошо
 	str1 := str.StrBuilder(
 		"c",
