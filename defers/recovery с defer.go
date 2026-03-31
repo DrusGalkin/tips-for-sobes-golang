@@ -20,8 +20,16 @@ func ProblemFunc() (num int) {
 	return
 }
 
-func Protected(f func() error) bool {
+// Так называемый middleware для проверки функции на ошибку
+func Protected(f func() error) {
 	defer func() {
-
+		if err := recover(); err != nil {
+			fmt.Println("Ошибка выполнения функции:", err)
+		}
 	}()
+
+	fmt.Println("старт функции")
+	if err := f(); err != nil {
+		panic(err)
+	}
 }
