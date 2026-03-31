@@ -62,6 +62,8 @@ func main() {
 	// сжатие строки
 	fmt.Println(tasks.RunLengthEncoding("aaaa                                                     ssss"))
 
+	fmt.Printf("tasks.PhoneNumber(\"79093331904\"): %v\n", tasks.PhoneNumber("79093331904"))
+
 }
 
 // тут я проверяю свои знания епт
